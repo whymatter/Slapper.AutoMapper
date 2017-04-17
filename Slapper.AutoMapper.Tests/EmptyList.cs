@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class EmptyListe : TestBase
     {
         public class Customer
@@ -22,7 +23,7 @@ namespace Slapper.Tests
             public decimal OrderTotal;
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Handle_Mapping_An_Empty_List()
         {
             // Arrange

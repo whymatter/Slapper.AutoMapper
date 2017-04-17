@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
+using Assert = NUnit.Framework.Assert;
 
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class ComplexMapsParentsAndChlidTest: TestBase
     {
         public class Hotel
@@ -35,7 +37,7 @@ namespace Slapper.Tests
             public IEnumerable<Service> Services { get; set; }
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Make_Cache_HashTypeEquals_With_Different_Parents()
         {
             var listOfDictionaries = new List<Dictionary<string, object>>

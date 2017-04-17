@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Dynamic;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class MappingToDateTimeTests : TestBase
     {
         public class PersonWithFields
@@ -25,7 +26,7 @@ namespace Slapper.Tests
             public DateTime? EndDate { get; set; }
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_DateTime_Values_To_Nullable_DateTime_Fields()
         {
             // Arrange
@@ -54,7 +55,7 @@ namespace Slapper.Tests
             Assert.That( customer.EndDate == endDate );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_DateTime_Values_To_Nullable_DateTime_Properties()
         {
             // Arrange
@@ -83,7 +84,7 @@ namespace Slapper.Tests
             Assert.That( customer.EndDate == endDate ); // This is what we are testing
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Null_Values_To_Nullable_DateTime_Fields()
         {
             // Arrange
@@ -112,7 +113,7 @@ namespace Slapper.Tests
             Assert.That( customer.EndDate == endDate ); // This is what we are testing
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Null_Values_To_Nullable_DateTime_Properties()
         {
             // Arrange
@@ -141,7 +142,7 @@ namespace Slapper.Tests
             Assert.That( customer.EndDate == endDate ); // This is what we are testing
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_DateTime_String_Values_To_Nullable_DateTime_Fields()
         {
             // Arrange
@@ -170,7 +171,7 @@ namespace Slapper.Tests
             Assert.That( customer.EndDate.ToString() == endDate.ToString() );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_DateTime_String_Values_To_Nullable_DateTime_Properties()
         {
             // Arrange

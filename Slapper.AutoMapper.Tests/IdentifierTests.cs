@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 // ReSharper disable InconsistentNaming
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class IdentifierTests : TestBase
     {
         public class IdentifierTestModels
@@ -52,7 +53,7 @@ namespace Slapper.Tests
             }
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Add_An_Identifier()
         {
             // Arrange
@@ -67,7 +68,7 @@ namespace Slapper.Tests
             Assert.That( identifiers.First() == identifier );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Add_Multiple_Identifiers()
         {
             // Arrange
@@ -85,7 +86,7 @@ namespace Slapper.Tests
             }
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Use_Default_Conventions_To_Find_An_Identifier()
         {
             // Act
@@ -95,7 +96,7 @@ namespace Slapper.Tests
             Assert.That( identifiers.First() == "Id" );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Use_A_Custom_Convention_To_Find_An_Identifier()
         {
             // Act
@@ -107,7 +108,7 @@ namespace Slapper.Tests
             Assert.That( identifiers.First() == "Person_Id" );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Find_An_Identifier_When_A_Field_Or_Property_Has_An_Id_Attribute()
         {
             // Act
@@ -117,7 +118,7 @@ namespace Slapper.Tests
             Assert.That( identifiers.First() == "CustomerId" );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Find_Identifiers_When_Multiple_Fields_Or_Properties_Have_An_Id_Attribute()
         {
             // Act

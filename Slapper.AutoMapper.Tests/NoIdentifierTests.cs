@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class NoIdentifierTests : TestBase
     {
         public class PersonWithFields
@@ -14,7 +15,7 @@ namespace Slapper.Tests
             public string LastName;
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_To_Types_With_No_Identifiers()
         {
             // Arrange

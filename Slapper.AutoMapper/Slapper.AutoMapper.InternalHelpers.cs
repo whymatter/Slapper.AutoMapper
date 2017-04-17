@@ -35,8 +35,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Remoting.Messaging;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using Slapper.Standard;
+[assembly: InternalsVisibleTo("Slapper.Tests")]
 
 namespace Slapper
 {
@@ -198,7 +200,7 @@ namespace Slapper
 
                     if (fieldInfo != null)
                     {
-                        if (fieldInfo.GetCustomAttributes(Configuration.IdentifierAttributeType, false).Length > 0)
+                        if (fieldInfo.GetCustomAttributes(Configuration.IdentifierAttributeType, false).Any())
                         {
                             identifiers.Add(memberName);
                         }
@@ -213,7 +215,7 @@ namespace Slapper
 
                         if (propertyInfo != null)
                         {
-                            if (propertyInfo.GetCustomAttributes(Configuration.IdentifierAttributeType, false).Length > 0)
+                            if (propertyInfo.GetCustomAttributes(Configuration.IdentifierAttributeType, false).Any())
                             {
                                 identifiers.Add(memberName);
                             }
@@ -470,7 +472,7 @@ namespace Slapper
             /// <returns>Populated instance</returns>
             internal static object Map(IDictionary<string, object> dictionary, object instance, object parentInstance = null)
             {
-                if (instance.GetType().IsPrimitive || instance is string)
+                if (instance.GetType().GetTypeInfo().IsPrimitive || instance is string)
                 {
                     object value;
                     if (!dictionary.TryGetValue("$", out value))
@@ -502,7 +504,7 @@ namespace Slapper
                         Type memberType = GetMemberType(member);
 
                         // Handle populating complex members on the current type
-                        if (memberType.IsClass || memberType.IsInterface)
+                        if (memberType.GetTypeInfo().IsClass || memberType.GetTypeInfo().IsInterface)
                         {
                             // Try to find any keys that start with the current member name
                             var nestedDictionary = dictionary.Where(x => x.Key.ToLower().StartsWith(memberName + "_")).ToList();
@@ -523,8 +525,11 @@ namespace Slapper
 
                                 continue;
                             }
-                            var regex = new Regex(Regex.Escape(memberName + "_"));
-                            var newDictionary = nestedDictionary.ToDictionary(pair => regex.Replace(pair.Key.ToLower(), string.Empty, 1),
+                            //var regex = new Regex(Regex.Escape(memberName + "_"));
+                            //var newDictionary = nestedDictionary.ToDictionary(pair => regex.Replace(pair.Key.ToLower(), string.Empty, 1),
+                            //    pair => pair.Value, StringComparer.OrdinalIgnoreCase);
+
+                            var newDictionary = nestedDictionary.ToDictionary(pair => pair.Key.ToLower().Replace(memberName + "_", string.Empty),
                                 pair => pair.Value, StringComparer.OrdinalIgnoreCase);
 
                             // Try to get the value of the complex member. If the member
@@ -532,11 +537,11 @@ namespace Slapper
                             object nestedInstance = GetMemberValue(member, instance);
 
                             var genericCollectionType = typeof(IEnumerable<>);
-                            var isEnumerableType = memberType.IsGenericType && genericCollectionType.IsAssignableFrom(memberType.GetGenericTypeDefinition())
-                                                   || memberType.GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == genericCollectionType);
+                            var isEnumerableType = memberType.GetTypeInfo().IsGenericType && genericCollectionType.IsAssignableFrom(memberType.GetGenericTypeDefinition())
+                                                   || memberType.GetInterfaces().Any(x => x.GetTypeInfo().IsGenericType && x.GetGenericTypeDefinition() == genericCollectionType);
 
                             // If the member is null and is a class or interface (not ienumerable), try to create an instance of the type
-                            if (nestedInstance == null && (memberType.IsClass || (memberType.IsInterface && !isEnumerableType)))
+                            if (nestedInstance == null && (memberType.GetTypeInfo().IsClass || (memberType.GetTypeInfo().IsInterface && !isEnumerableType)))
                             {
                                 if (memberType.IsArray)
                                 {
@@ -822,7 +827,7 @@ namespace Slapper
                         try
                         {
                             SystemDotWeb = Assembly
-                                .Load("System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a");
+                                .Load(new AssemblyName("System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"));
 
                             if (SystemDotWeb == null) return;
 

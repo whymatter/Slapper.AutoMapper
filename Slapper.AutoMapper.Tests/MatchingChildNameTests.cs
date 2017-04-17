@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 namespace Slapper.Tests
 {
@@ -23,7 +24,7 @@ namespace Slapper.Tests
             public IList<Member> Members { get; set; }
         }
 
-        [Test]
+        [TestMethod]
         public void Can_map_grandchild_with_parts_of_same_name_as_child()
         {
             var data = new List<Dictionary<string, object>> {

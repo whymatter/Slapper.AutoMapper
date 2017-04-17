@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 // ReSharper disable InconsistentNaming, RedundantNameQualifier
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class ComplexMapTests : TestBase
     {
         public class Customer
@@ -83,7 +84,7 @@ namespace Slapper.Tests
             }
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Complex_Nested_Members()
         {
             // Arrange
@@ -128,7 +129,7 @@ namespace Slapper.Tests
         /// wrongly reusing an instance instead of creating a new one (issue #48).
         /// It's now fixed as real identifier values are compared, not their hashes anymore.
         /// </summary>
-        [Test]
+        [TestMethod]
         public void Can_Detect_Duplicate_Parent_Members_And_Properly_Instantiate_The_Object_Only_Once()
         {
             // Arrange
@@ -177,7 +178,7 @@ namespace Slapper.Tests
             Assert.That( customer.Orders[ 1 ].OrderTotal == orderTotal + 1 );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Handle_Nested_Members_That_Implements_ICollection()
         {
             // Arrange
@@ -216,7 +217,7 @@ namespace Slapper.Tests
             Assert.That( customer.Orders.Count() == 2 );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Handle_Mapping_Objects_With_Multiple_Identifiers()
         {
             // Arrange
@@ -268,7 +269,7 @@ namespace Slapper.Tests
             Assert.That( customers.ToList()[ 1 ].Orders.First().Id == orderId + 1 );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_To_Multiple_Objects()
         {
             // Arrange
@@ -301,7 +302,7 @@ namespace Slapper.Tests
             Assert.That( customers.ToList()[ 1 ].FirstName == "Jane" );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Handle_Mapping_Deeply_Nested_Members()
         {
             // Arrange
@@ -327,7 +328,7 @@ namespace Slapper.Tests
             Assert.That( customer.Orders.First().OrderDetails.First().Product.ProductName == "Black Bookshelf" );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Handle_Resolving_Duplicate_Nested_Members()
         {
             // Arrange

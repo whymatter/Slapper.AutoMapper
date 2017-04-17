@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 // ReSharper disable InconsistentNaming
 
@@ -8,7 +9,7 @@ namespace Slapper.Tests
     using System;
     using System.Linq;
 
-    [TestFixture]
+    [TestClass]
     public class CachingBehaviorTests : TestBase
     {
         public class Customer
@@ -54,7 +55,7 @@ namespace Slapper.Tests
             public List<OrderItem> OrderItems { get; set; }
         }
 
-        [Test]
+        [TestMethod]
         public void Previously_Instantiated_Objects_Will_Be_Returned_Until_The_Cache_Is_Cleared()
         {
             // Arrange
@@ -93,7 +94,7 @@ namespace Slapper.Tests
             Assert.Null(customer3.FirstName);
         }
 
-        [Test]
+        [TestMethod]
         public void Test_Nested_Duplicate_Instances()
         {
             var item1 = new Dictionary<string, object>()
@@ -118,7 +119,7 @@ namespace Slapper.Tests
             Assert.AreSame(employeeList[0].Department, employeeList[1].Department);           
         }
 
-        [Test]
+        [TestMethod]
         public void Test_Long_Ids_With_Colliding_HashValues()
         {
             // This test could fail if MS GetHashCode implementation for long changed. We would then have to find new long values
@@ -144,7 +145,7 @@ namespace Slapper.Tests
             Assert.AreEqual(orderList.Count, list.Count);
         }
 
-        [Test]
+        [TestMethod]
         public void Cache_is_cleared_if_KeepCache_is_false()
         {
             var item1 = new Dictionary<string, object> {

@@ -1,13 +1,14 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     class MapUniqueChildsIdTest
     {
         public class NameValue
@@ -19,7 +20,7 @@ namespace Slapper.Tests
             public IEnumerable<NameValue> Emails { get; set; }
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_DifferentsRows_to_Same_object()
         {
             dynamic dynamicCustomer = new ExpandoObject();

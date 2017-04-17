@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class SimpleTypeConversionTests : TestBase
     {
         public class PersonWithFields
@@ -22,7 +23,7 @@ namespace Slapper.Tests
             public string LastName { get; set; }
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Matching_Field_Names_With_Different_Types()
         {
             // Arrange
@@ -47,7 +48,7 @@ namespace Slapper.Tests
             Assert.That( customer.LastName == lastName );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Matching_Property_Names_With_Different_Types()
         {
             // Arrange

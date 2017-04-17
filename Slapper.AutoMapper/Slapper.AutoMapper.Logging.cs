@@ -125,7 +125,7 @@ namespace Slapper
                 {
                     if (logLevel >= MinimumLogLevel)
                     {
-                        Trace.WriteLine(args == null ? format : string.Format(format, args));
+                        Console.WriteLine(args == null ? format : string.Format(format, args));
                     }
                 }
 
@@ -144,7 +144,7 @@ namespace Slapper
 
                         output += ". Exception: " + exception.Message;
 
-                        Trace.WriteLine(output);
+                        Console.WriteLine(output);
                     }
                 }
 

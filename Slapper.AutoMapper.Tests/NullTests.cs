@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class NullTests : TestBase
     {
         public class PersonWithFields
@@ -20,7 +21,7 @@ namespace Slapper.Tests
             public string LastName { get; set; }
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Null_Values()
         {
             // Arrange

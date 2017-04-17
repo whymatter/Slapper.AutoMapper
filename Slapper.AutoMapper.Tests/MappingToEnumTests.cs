@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class MappingToEnumTests : TestBase
     {
         public enum Gender
@@ -37,7 +38,7 @@ namespace Slapper.Tests
             public MaritalStatus? MaritalStatus { get; set; }
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Enum_Values_To_Enum_Fields()
         {
             // Arrange
@@ -65,7 +66,7 @@ namespace Slapper.Tests
             Assert.That( customer.Gender == gender );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Enum_Values_To_Enum_Properties()
         {
             // Arrange
@@ -93,7 +94,7 @@ namespace Slapper.Tests
             Assert.That( customer.Gender == gender );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Integer_Values_To_Enum_Fields()
         {
             // Arrange
@@ -121,7 +122,7 @@ namespace Slapper.Tests
             Assert.That( customer.Gender == gender );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Integer_Values_To_Enum_Properties()
         {
             // Arrange
@@ -149,7 +150,7 @@ namespace Slapper.Tests
             Assert.That( customer.Gender == gender );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_String_Values_To_Enum_Fields()
         {
             // Arrange
@@ -177,7 +178,7 @@ namespace Slapper.Tests
             Assert.That( customer.Gender == gender );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_String_Values_To_Enum_Properties()
         {
             // Arrange
@@ -205,7 +206,7 @@ namespace Slapper.Tests
             Assert.That( customer.Gender == gender );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Null_Values_To_Nullable_Enum_Fields()
         {
             // Arrange
@@ -234,7 +235,7 @@ namespace Slapper.Tests
             Assert.That( customer.MaritalStatus == maritalStatus );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Null_Values_To_Nullable_Enum_Properties()
         {
             // Arrange
@@ -263,7 +264,7 @@ namespace Slapper.Tests
             Assert.That( customer.MaritalStatus == maritalStatus );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Int32_Values_To_NUllable_Enum_Properties()
         {
             dynamic person = new ExpandoObject();

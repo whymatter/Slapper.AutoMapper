@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Slapper.Tests
 {
     public class HashCollisionTests
     {
-        [Test]
+        [TestMethod]
         public void Avoids_Hash_Collisions()
         {
             // Arrange

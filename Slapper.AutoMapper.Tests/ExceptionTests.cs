@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
+using Assert = NUnit.Framework.Assert;
 
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class ExceptionTests : TestBase
     {
         public class Person
@@ -15,7 +17,7 @@ namespace Slapper.Tests
             public string LastName;
         }
 
-        [Test]
+        [TestMethod]
         public void Will_Throw_An_Exception_If_The_Type_Is_Not_Dynamic()
         {
             // Arrange
@@ -28,7 +30,7 @@ namespace Slapper.Tests
             Assert.Throws<ArgumentException>( test );
         }
 
-        [Test]
+        [TestMethod]
         public void Will_Not_Throw_An_Exception_If_The_List_Items_Are_Not_Dynamic()
         {
             // Arrange
@@ -41,7 +43,7 @@ namespace Slapper.Tests
             Assert.DoesNotThrow( test );
         }
 
-        [Test]
+        [TestMethod]
         public void Will_Return_An_Empty_List_Of_The_Requested_Type_When_Passed_An_Empty_List()
         {
             // Arrange

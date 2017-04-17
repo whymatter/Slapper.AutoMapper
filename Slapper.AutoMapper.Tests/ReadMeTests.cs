@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 // ReSharper disable InconsistentNaming
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class ReadMeTests : TestBase
     {
         public class Person
@@ -37,7 +38,7 @@ namespace Slapper.Tests
             public decimal OrderDetailTotal;
         }
         
-        [Test]
+        [TestMethod]
         public void I_Can_Map_Nested_Types_And_Resolve_Duplicate_Entries_Properly()
         {
             // Arrange
@@ -80,7 +81,7 @@ namespace Slapper.Tests
             Assert.That( customers.FirstOrDefault().Orders.FirstOrDefault().OrderDetails.Count == 2 );
         }
 
-        [Test]
+        [TestMethod]
         public void I_Can_Map_Nested_Types_And_Resolve_Duplicate_Entries_Properly_Using_Dynamics()
         {
             // Arrange
@@ -119,7 +120,7 @@ namespace Slapper.Tests
             Assert.That( customers.FirstOrDefault().Orders.FirstOrDefault().OrderDetails.Count == 2 );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Matching_Field_Names_With_Ease()
         {
             // Arrange
@@ -140,7 +141,7 @@ namespace Slapper.Tests
             Assert.That( person.LastName == "Kent" );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Matching_Field_Names_Using_Dynamic()
         {
             // Arrange

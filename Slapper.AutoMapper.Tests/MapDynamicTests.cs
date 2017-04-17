@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class MapDynamicTests : TestBase
     {
         public class Customer
@@ -41,7 +42,7 @@ namespace Slapper.Tests
             public string Address;
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Handle_Mapping_A_Single_Dynamic_Object()
         {
             // Arrange
@@ -60,7 +61,7 @@ namespace Slapper.Tests
             Assert.That( customer.Orders.Count == 1 );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Handle_Mapping_Nested_Members_Using_Dynamic()
         {
             // Arrange
@@ -86,7 +87,7 @@ namespace Slapper.Tests
             Assert.That( customers.First().Orders.Count == 1 );
         }
 
-        [Test]
+        [TestMethod]
         public void Nested_Member_Should_Be_Null_If_All_Values_Are_Null()
         {
             // Arrange
@@ -105,7 +106,7 @@ namespace Slapper.Tests
             Assert.That(test.Order == null);
         }
 
-        [Test]
+        [TestMethod]
         public void Nested_Member_Should_Be_Null_Only_If_All_Nested_Values_Are_Null()
         {
             // Arrange

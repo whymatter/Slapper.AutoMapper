@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using NUnit.Framework;
+using System.Reflection;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 namespace Slapper.Tests
 {
@@ -62,7 +64,7 @@ namespace Slapper.Tests
             public int Order { get; } = 1;
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Use_Registered_TypeActivators_WithInterfaces()
         {
             // Arrange
@@ -134,7 +136,7 @@ namespace Slapper.Tests
             public int Order { get; } = 1;
         }
 
-        [Test]
+        [TestMethod]
         public void TypeActivator_Order_Is_Adhered_To()
         {
             // Arrange

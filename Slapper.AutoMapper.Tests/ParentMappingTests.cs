@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class ParentMappingTests : TestBase
     {
         public class Customer
@@ -27,7 +28,7 @@ namespace Slapper.Tests
             public Customer Customer;
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Populate_Parent_Objects_Referenced_In_Child_Objects()
         {
             dynamic dynamicCustomer = new ExpandoObject();

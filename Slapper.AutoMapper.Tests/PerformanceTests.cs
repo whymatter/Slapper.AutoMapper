@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
+using Assert = NUnit.Framework.Assert;
 
 // ReSharper disable InconsistentNaming
 namespace Slapper.Tests
 {
-    [TestFixture]
-    [Explicit]
+    [TestClass]
     public class PerformanceTests : TestBase
     {
         public class Customer
@@ -44,7 +45,7 @@ namespace Slapper.Tests
         ///     v1.0.0.5: Mapped 50000 objects in 1877 ms.
         ///     v1.0.0.6: Mapped 50000 objects in 1642 ms.
         /// </remarks>
-        [Test]
+        [TestMethod]
         public void Simple_Performance_Test()
         {
             // Arrange
@@ -90,7 +91,7 @@ namespace Slapper.Tests
         ///     v1.0.0.6: Mapped 50000 objects in 5539 ms.
         ///     v1.0.0.8: Mapped 50000 objects in 4185 ms.
         /// </remarks>
-        [Test]
+        [TestMethod]
         public void Complex_Performance_Test()
         {
             // Arrange

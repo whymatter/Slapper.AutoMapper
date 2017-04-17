@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Slapper.Tests
 {
     using NUnit.Framework;
 
-    [TestFixture]
+    [TestClass]
     public class MapCollectionsTypedTest : TestBase
     {
         public class Customer
@@ -22,7 +23,7 @@ namespace Slapper.Tests
             public IList<string> Names;
         }
 
-        [Test]
+        [TestMethod]
         public void I_Can_Map_Value_PrimitiveTyped_Collection()
         {
             // Arrange
@@ -55,7 +56,7 @@ namespace Slapper.Tests
         }
 
 
-        [Test]
+        [TestMethod]
         public void I_Can_Map_Value_SpecialStringTyped_Collection()
         {
             // Arrange
@@ -107,7 +108,7 @@ namespace Slapper.Tests
             public long MerchantId { set; get; }
         }
 
-        [Test]
+        [TestMethod]
         public void I_Can_Map_Any_Typed_ICollection()
         {
             // this strings was received from database (or another flat storage)

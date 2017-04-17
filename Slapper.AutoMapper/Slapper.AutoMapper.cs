@@ -33,6 +33,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Slapper
 {
@@ -86,7 +87,7 @@ namespace Slapper
         {
             if (dynamicObject == null)
             {
-                return type.IsValueType ? Activator.CreateInstance(type) : null;
+                return type.GetTypeInfo().IsValueType ? Activator.CreateInstance(type) : null;
             }
 
             var dictionary = dynamicObject as IDictionary<string, object>;

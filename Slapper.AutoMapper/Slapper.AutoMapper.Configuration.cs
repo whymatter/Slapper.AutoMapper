@@ -32,6 +32,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Slapper
 {
@@ -235,7 +236,7 @@ namespace Slapper
                 public bool CanConvert(object value, Type type)
                 {
                     var conversionType = Nullable.GetUnderlyingType(type) ?? type;
-                    return conversionType.IsEnum;
+                    return conversionType.GetTypeInfo().IsEnum;
                 }
 
                 /// <summary>
@@ -277,7 +278,7 @@ namespace Slapper
                 /// <returns>Boolean response.</returns>
                 public bool CanConvert(object value, Type type)
                 {
-                    return type.IsValueType && !type.IsEnum && type != typeof(Guid);
+                    return type.GetTypeInfo().IsValueType && !type.GetTypeInfo().IsEnum && type != typeof(Guid);
                 }
 
                 /// <summary>

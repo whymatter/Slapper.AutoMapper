@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Dynamic;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Assert = NUnit.Framework.Assert;
 
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class MappingToGuidTests : TestBase
     {
         public class PersonWithFields
@@ -25,7 +26,7 @@ namespace Slapper.Tests
             public Guid? ANullableUniqueId { get; set; }
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Guid_Values_To_Guid_Fields()
         {
             // Arrange
@@ -51,7 +52,7 @@ namespace Slapper.Tests
             Assert.That( customer.UniqueId == uniqueId );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Guid_Values_To_Guid_Properties()
         {
             // Arrange
@@ -77,7 +78,7 @@ namespace Slapper.Tests
             Assert.That( customer.UniqueId == uniqueId );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Guid_String_Values_To_Guid_Fields()
         {
             // Arrange
@@ -103,7 +104,7 @@ namespace Slapper.Tests
             Assert.That( Equals( customer.UniqueId, uniqueId ) ); // This is what we are testing
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Guid_String_Values_To_Guid_Properties()
         {
             // Arrange
@@ -129,7 +130,7 @@ namespace Slapper.Tests
             Assert.That( Equals( customer.UniqueId, uniqueId ) ); // This is what we are testing
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Null_Values_To_Guid_Fields()
         {
             // Arrange
@@ -158,7 +159,7 @@ namespace Slapper.Tests
             Assert.That( customer.ANullableUniqueId == aNullableUniqueId ); // This is what we are testing
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Null_Values_To_Guid_Properties()
         {
             // Arrange

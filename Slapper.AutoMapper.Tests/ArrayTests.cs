@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
+using Assert = NUnit.Framework.Assert;
 
 namespace Slapper.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class ArrayTests : TestBase
     {
         public class PersonWithFields
@@ -22,7 +24,7 @@ namespace Slapper.Tests
             public string[] FavoriteFoods { get; set; }
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Null_Values_To_Null_Arrays()
         {
             // Arrange
@@ -50,7 +52,7 @@ namespace Slapper.Tests
             Assert.Null( customer.FavoriteFoods );
         }
 
-        [Test]
+        [TestMethod]
         public void Can_Map_Array_Values_To_Arrays()
         {
             // Arrange
